@@ -25,11 +25,11 @@ export default function Navbar() {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <Link href="/" className="text-red-600 font-bold hover:no-underline">
-                            CL
+                            Floored ®
                         </Link>
                         <span className="text-gray-500">|</span>
                         <Link href="/" className="text-red-600 hover:underline">
-                            missed connections
+                            missed connections for the dancefloor
                         </Link>
                     </div>
 
