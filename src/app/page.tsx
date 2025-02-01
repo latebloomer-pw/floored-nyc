@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import Link from 'next/link';
 import type { Post } from '@/types';
 
 export default function Home() {
@@ -16,13 +17,10 @@ export default function Home() {
           .select('*')
           .order('created_at', { ascending: false });
 
-        if (error) {
-          throw error;
-        }
-
+        if (error) throw error;
         setPosts(data || []);
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error:', error);
       } finally {
         setLoading(false);
       }
@@ -31,21 +29,33 @@ export default function Home() {
     fetchPosts();
   }, []);
 
+  const formatTimeAgo = (date: string) => {
+    const minutes = Math.floor((new Date().getTime() - new Date(date).getTime()) / 60000);
+    if (minutes < 60) return `${minutes}m ago`;
+    if (minutes < 1440) return `${Math.floor(minutes / 60)}h ago`;
+    return `${Math.floor(minutes / 1440)}d ago`;
+  };
+
   if (loading) {
-    return <div className="flex justify-center p-8">Loading posts...</div>;
+    return <div className="p-4">Loading...</div>;
   }
 
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-8">Missed Connections</h1>
-      <div className="grid gap-6">
+    <main className="container mx-auto px-4">
+      <div className="space-y-1">
         {posts.map((post) => (
-          <div key={post.id} className="border rounded-lg p-6 shadow-sm">
-            <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-            <p className="text-gray-600 mb-4">{post.description}</p>
-            <div className="text-sm text-gray-500">
-              <p>Location: {post.location}</p>
-              <p>Date: {new Date(post.encounter_date).toLocaleDateString()}</p>
+          <div key={post.id} className="flex items-start gap-2">
+            <span className="text-gray-400">☆</span>
+            <div>
+              <Link
+                href={`/posts/${post.id}`}
+                className="text-red-600 hover:underline"
+              >
+                {post.title}
+              </Link>
+              <span className="text-gray-500 text-sm ml-2">
+                ({post.location} • {formatTimeAgo(post.created_at)})
+              </span>
             </div>
           </div>
         ))}
