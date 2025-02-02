@@ -45,7 +45,20 @@ export default function Home() {
       <div className="space-y-1">
         {posts.map((post) => (
           <div key={post.id} className="flex items-start gap-2">
-            <span className="text-gray-400">☆</span>
+            <span className="text-gray-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                className="hover:text-red-400 cursor-pointer"
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </span>
             <div>
               <Link
                 href={`/posts/${post.id}`}

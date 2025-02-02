@@ -1,0 +1,7 @@
+/* src/app/fonts.css */
+@font-face {
+    font-family: 'Pinyon Script';
+    src: url('/fonts/PinyonScript-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}

@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Helvetica', 'sans-serif'],
+        serif: ['Pinyon Script', 'serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

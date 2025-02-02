@@ -9,3 +9,10 @@ export interface Post {
     created_at: string
     updated_at: string
 }
+export interface Response {
+    id: string;
+    post_id: string;
+    responder_id: string;
+    content: string;
+    created_at: string;
+}

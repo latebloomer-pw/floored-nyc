@@ -1,7 +1,7 @@
 'use client';
 
 import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
+import { darkThemes, ThemeMinimal, ThemeSupa } from '@supabase/auth-ui-shared';
 import { supabase } from '@/lib/supabase';
 
 export default function AuthComponent() {
@@ -9,9 +9,20 @@ export default function AuthComponent() {
         <div className="max-w-md mx-auto p-6">
             <Auth
                 supabaseClient={supabase}
-                appearance={{ theme: ThemeSupa }}
+                appearance={{
+                    theme: ThemeSupa,
+                    variables: {
+                        default: {
+                            colors: {
+                                brand: '#e7000b',
+                                brandAccent: 'black',
+                            },
+                        },
+                    },
+                }}
                 providers={['google']}
-                redirectTo={`${window.location.origin}/auth/callback`}
+                redirectTo={`${window.location.origin}/auth/callback`
+                }
             />
         </div>
     );
