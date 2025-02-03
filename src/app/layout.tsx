@@ -2,15 +2,12 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
-import './fonts.css'
+import Footer from '@/components/Footer';
 
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Floored NYC ®',
-  description: 'missed connections for the dancefloor',
+  title: 'Floored ®',
+  description: 'Missed connections for the dancefloor',
 };
 
 export default function RootLayout({
@@ -19,12 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ErrorBoundary>
-          <Navbar />
+    <html lang="en" className="h-full">
+      <body className={'flex flex-col min-h-full'}>
+        <Navbar />
+        <main className="flex-1 my-20">  {/* Changed from flex-grow to flex-1 */}
           {children}
-        </ErrorBoundary>
+        </main>
+        <Footer />
       </body>
     </html>
   );

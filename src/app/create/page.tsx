@@ -18,7 +18,7 @@ export default function CreatePostPage() {
     }, []);
 
     if (isAuthenticated === null) {
-        return <div>Loading...</div>;
+        return <div className='mx-auto'>Loading...</div>;
     }
 
     return (

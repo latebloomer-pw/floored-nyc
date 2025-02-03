@@ -1,10 +1,25 @@
+// src/components/Auth.tsx
 'use client';
 
 import { Auth } from '@supabase/auth-ui-react';
-import { darkThemes, ThemeMinimal, ThemeSupa } from '@supabase/auth-ui-shared';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { supabase } from '@/lib/supabase';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function AuthComponent() {
+    const router = useRouter();
+
+    useEffect(() => {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+            if (event === 'SIGNED_IN') {
+                router.push('/');
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, [router]);
+
     return (
         <div className="max-w-md mx-auto p-6">
             <Auth
@@ -20,9 +35,7 @@ export default function AuthComponent() {
                         },
                     },
                 }}
-                providers={['google']}
-                redirectTo={`${window.location.origin}/auth/callback`
-                }
+                providers={[]}
             />
         </div>
     );

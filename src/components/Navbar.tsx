@@ -2,13 +2,20 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 
 export default function Navbar() {
     const [user, setUser] = useState<any>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
+
+
+    const handleSignOut = async () => {
+        await supabase.auth.signOut();
+        router.push('/');  // Add this line
+    };
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data: { user } }) => {
@@ -33,8 +40,9 @@ export default function Navbar() {
         return false;
     };
 
+
     return (
-        <header className="border-b border-gray-300 bg-gray-100 mb-6">
+        <header className="border-b border-gray-300 bg-gray-100 mb-6 fixed top-0 w-full z-50">
             <div className="container mx-auto px-4">
                 {/* Main navbar - always visible */}
                 <div className="flex items-center justify-between h-12">
@@ -80,7 +88,7 @@ export default function Navbar() {
                                     my posts
                                 </Link>
                                 <button
-                                    onClick={() => supabase.auth.signOut()}
+                                    onClick={() => handleSignOut()}
                                     className="text-gray-600 hover:underline"
                                 >
                                     sign out

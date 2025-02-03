@@ -141,7 +141,7 @@ export default function EditPost() {
                         type="text"
                         name="contact_method"
                         defaultValue={post.contact_method}
-                        placeholder="Contact Method (email or phone)"
+                        placeholder="Contact Info (public, only share if you're comfy)"
                         required
                         className="w-full border px-2 py-1"
                     />

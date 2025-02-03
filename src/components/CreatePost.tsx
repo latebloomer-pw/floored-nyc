@@ -45,7 +45,7 @@ export default function CreatePost() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-2xl">
+        <form onSubmit={handleSubmit} className="mx-4 max-w-2xl">
             <h2 className="text-lg mb-4">Create New Post</h2>
 
             {error && (
@@ -98,7 +98,7 @@ export default function CreatePost() {
                     <input
                         type="text"
                         name="contact_method"
-                        placeholder="contact info (public, only share if you're comfy)"
+                        placeholder="Contact Info (public, only share if you're comfy)"
                         className="w-full border px-2 py-1"
                     />
                 </div>
