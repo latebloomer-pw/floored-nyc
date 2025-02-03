@@ -2,7 +2,7 @@
 
 // src/__tests__/auth.test.tsx
 import { render, screen } from '@testing-library/react'
-import { supabase } from '@/lib/supabase'
+//import { supabase } from '@/lib/supabase'
 import AuthComponent from '@/components/Auth'
 
 // Mock next/navigation

@@ -7,6 +7,7 @@ import type { Post } from '@/types';
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
+  {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */ }
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

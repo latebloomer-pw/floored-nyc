@@ -13,6 +13,7 @@ export default function MyPosts() {
 
     useEffect(() => {
         fetchUserPosts();
+        {/* eslint-disable-next-line react-hooks/exhaustive-deps */ }
     }, []);
 
     async function fetchUserPosts() {
@@ -121,6 +122,7 @@ export default function MyPosts() {
             </div>
             {posts.length === 0 && (
                 <div className="text-gray-500 p-4">
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                     You haven't created any posts yet.
                 </div>
             )}

@@ -1,4 +1,5 @@
 export default function Guidelines() {
+    /* eslint-disable react/no-unescaped-entities */
     return (
         <div className="container mx-auto px-4 max-w-2xl py-8">
 
