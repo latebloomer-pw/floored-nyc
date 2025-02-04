@@ -123,7 +123,7 @@ export default function PostPage() {
                 <div>
                     {hasResponded ? (
                         <div className="bg-green-50 text-green-600 p-4 rounded-md">
-                            You have already responded to this post
+                            Your response has been sent.
                         </div>
                     ) : (
                         <form onSubmit={handleRespond} className="space-y-4">
