@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Analytics } from "@vercel/analytics/react"
 
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1 my-20">  {/* Changed from flex-grow to flex-1 */}
           {children}
+          <Analytics />
         </main>
         <Footer />
       </body>
